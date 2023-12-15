@@ -1,5 +1,33 @@
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.header {
+  height: 80px;
+  background-color: rgb(237, 237, 237);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(0, 0, 0);
+  padding: 0 20px;
+}
+
+.menu a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  margin: 0 20px;
+  font-weight: 600;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 3em;
+  padding-left: 10rem;
+  padding-right: 10rem;
+  background-color: #fafafa;
 }
 
 .App-logo {
