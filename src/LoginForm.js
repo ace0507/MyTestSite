@@ -1,51 +1,6 @@
 import React, { useState } from "react";
 import { useAuth } from "./AuthContext";
-
-const styles = {
-  container: {
-    maxWidth: "300px",
-    margin: "auto",
-    // padding: "30px",
-    // border: "1px solid #ddd",
-    borderRadius: "8px",
-    // boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-    // backgroundColor: "#fff",
-  },
-  heading: {
-    textAlign: "center",
-    color: "#333",
-  },
-  label: {
-    display: "block",
-    margin: "10px 0",
-  },
-  input: {
-    width: "100%",
-    padding: "15px",
-    boxSizing: "border-box",
-    borderRadius: "4px",
-    border: "1px solid #ddd",
-  },
-  button: {
-    width: "100%",
-    padding: "17px",
-    backgroundColor: "gray",
-    color: "#fff",
-    borderRadius: "3px",
-    border: "none",
-    cursor: "pointer",
-  },
-  error: {
-    color: "red",
-    textAlign: "center",
-    marginTop: "10px",
-  },
-  success: {
-    color: "green",
-    textAlign: "center",
-    marginTop: "10px",
-  },
-};
+import styled, { keyframes } from "styled-components";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -87,41 +42,34 @@ const LoginForm = () => {
   };
 
   return (
-    <div style={styles.container}>
-      <h2 style={styles.heading}>Login Form</h2>
-      <form onSubmit={handleLogin}>
-        <label style={styles.label}>
-          Username:
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            style={styles.input}
-          />
-        </label>
-        <br />
-        <label style={styles.label}>
-          Password:
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            style={styles.input}
-          />
-        </label>
-        <br />
-        <button type="submit" style={styles.button}>
-          Log in
-        </button>
-        {/* {loginError && <p style={styles.error}>로그인실패</p>} */}
-        {loginError ? (
-          <p style={styles.error}>로그인실패</p>
-        ) : (
-          <p style={styles.success}>로그인성공</p>
-        )}
-      </form>
-    </div>
+    <Container>
+      <Heading>리액트 훅 폼</Heading>
+      <Text>
+        사용하기 쉬운 검증 기능을 갖춘 유연하고 확장 가능한 고성능 양식입니다.
+      </Text>
+    </Container>
   );
 };
 
 export default LoginForm;
+
+const Container = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 3em;
+  padding-left: 10rem;
+  padding-right: 10rem;
+  background-color: #121e52;
+`;
+
+const Heading = styled.h2`
+  textalign: center;
+  color: white;
+`;
+
+const Text = styled.p`
+  color: pink;
+  textalign: center;
+  margintop: 10px;
+`;

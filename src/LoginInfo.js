@@ -1,56 +1,59 @@
 import React, { useState } from "react";
 import { useAuth } from "./AuthContext";
+import styled, { keyframes } from "styled-components";
+// BrowserRouter가 있어서 쓸 수 있음
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
-const styles = {
-  container: {
-    maxWidth: "300px",
-    margin: "auto",
-    // padding: "100px",
-    // border: "1px solid #ddd",
-    // borderRadius: "8px",
-    // boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-    // backgroundColor: "#fff",
-  },
-  heading: {
-    textAlign: "center",
-    color: "#333",
-  },
-  button: {
-    width: "100%",
-    padding: "17px",
-    backgroundColor: "gray",
-    color: "#fff",
-    borderRadius: "3px",
-    border: "none",
-    cursor: "pointer",
-    marginTop: "10px",
-  },
-  infoText: {
-    marginTop: "10px",
-  },
-};
-
-const LoginInfo = ({ authInfo }) => {
+const LoginInfo = () => {
   const [showInfo, setShowInfo] = useState(false);
-  const { register } = useAuth();
+  const { authInfo } = useAuth();
 
   const handleButtonClick = () => {
     setShowInfo(true);
   };
 
   return (
-    <div style={styles.container}>
-      <h2 style={styles.heading}>로그인 정보</h2>
-      <button onClick={handleButtonClick} style={styles.button}>
-        가져오기
-      </button>
-      {showInfo && (
-        <p style={styles.infoText}>
-          {`${authInfo?.username}의 비밀번호는 ${authInfo?.password}입니다`}
-        </p>
-      )}
-    </div>
+    <>
+      <Router>
+        <Container>
+          <SideMenu>
+            <MenuLink>Home</MenuLink>
+            <MenuLink>About</MenuLink>
+            <MenuLink>Join</MenuLink>
+            <MenuLink>Contact</MenuLink>
+          </SideMenu>
+          {/* <Content>
+            <Switch>
+              <Route path="/" exact component={LoginForm} />
+              <Route path="/another" component={AnotherComponent} />
+              <Route path="/yet-another" component={YetAnotherComponent} />
+            </Switch>
+          </Content> */}
+        </Container>
+      </Router>
+    </>
   );
 };
 
 export default LoginInfo;
+
+const Container = styled.div`
+  display: flex;
+  height: 100vh;
+`;
+
+const SideMenu = styled.nav`
+  width: 20%;
+  background-color: white;
+  padding: 20px;
+  border-right: 1px solid gray;
+  color: black;
+`;
+
+const MenuLink = styled(Link)`
+  display: block;
+  color: black;
+  padding: 10px;
+  margin: 10px 0;
+  text-decoration: none;
+`;
