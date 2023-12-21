@@ -36,7 +36,7 @@ function App() {
               온갖 기능
             </Link>
             <Link to="/contact" onClick={() => setActiveMenu("contact")}>
-              관리자
+              관리자test
             </Link>
           </Menu>
         </Header>
